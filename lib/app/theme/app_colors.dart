@@ -3,21 +3,26 @@ import 'package:flutter/material.dart';
 class AppColors {
   const AppColors._();
 
-  static const Color primary = Color(0xFF6366F1);
-  static const Color primaryVariant = Color(0xFF4F46E5);
-  static const Color secondary = Color(0xFF10B981);
-  static const Color accent = Color(0xFFF59E0B);
+  // Main Colors from Brand
+  static const Color primary = Color(0xFF2E3192);
+  static const Color secondary = Color(0xFF662D91);
+  static const Color tertiary = Color(0xFF6C2A00);
   
-  static const Color backgroundLight = Color(0xFFF8FAFC);
+  // Background & Surface
+  static const Color backgroundLight = Color(0xFFF8F9FA);
   static const Color surfaceLight = Color(0xFFFFFFFF);
-  static const Color textPrimaryLight = Color(0xFF0F172A);
-  static const Color textSecondaryLight = Color(0xFF64748B);
+  static const Color backgroundDark = Color(0xFF121212);
+  static const Color surfaceDark = Color(0xFF1E1E1E);
 
-  static const Color backgroundDark = Color(0xFF0F172A);
-  static const Color surfaceDark = Color(0xFF1E293B);
-  static const Color textPrimaryDark = Color(0xFFF8FAFC);
-  static const Color textSecondaryDark = Color(0xFF94A3B8);
+  // Text
+  static const Color textPrimaryLight = Color(0xFF1A1A1A);
+  static const Color textSecondaryLight = Color(0xFF757575);
+  static const Color textPrimaryDark = Color(0xFFF8F9FA);
+  static const Color textSecondaryDark = Color(0xFFB0B0B0);
 
-  static const Color error = Color(0xFFEF4444);
-  static const Color success = Color(0xFF22C55E);
+  // Status
+  static const Color error = Color(0xFFD32F2F);
+  static const Color success = Color(0xFF388E3C);
+  static const Color info = Color(0xFF1976D2);
+  static const Color warning = Color(0xFFFBC02D);
 }

@@ -6,9 +6,11 @@ void main() {
   testWidgets('SkillForgeApp smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const SkillForgeApp());
-    await tester.pumpAndSettle();
 
-    // Verify title appears on screen
+    // Verify title appears on splash screen
     expect(find.text(AppConstants.appName), findsOneWidget);
+
+    // Drain pending splash timer to ensure clean tear down
+    await tester.pump(const Duration(seconds: 4));
   });
 }
