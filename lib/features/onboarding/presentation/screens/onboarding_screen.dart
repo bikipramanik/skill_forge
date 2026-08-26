@@ -48,7 +48,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: BlocListener<OnboardingCubit, OnboardingState>(
         listener: (context, state) {
           if (state.isCompleted) {
-            context.go(AppConstants.homeRoute);
+            context.go(AppConstants.authRoute);
           }
         },
         child: Scaffold(

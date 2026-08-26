@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skill_forge_app/core/constants/app_constants.dart';
+import 'package:skill_forge_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:skill_forge_app/features/home/domain/entities/skill_entity.dart';
 import 'package:skill_forge_app/features/home/presentation/screens/home_screen.dart';
 import 'package:skill_forge_app/features/home/presentation/screens/skill_detail_screen.dart';
@@ -20,6 +21,10 @@ class AppRouter {
       GoRoute(
         path: AppConstants.onboardingRoute,
         builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: AppConstants.authRoute,
+        builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
         path: AppConstants.homeRoute,

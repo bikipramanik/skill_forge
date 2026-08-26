@@ -9,4 +9,5 @@ class AppConstants {
   static const String homeRoute = '/home';
   static const String skillDetailRoute = '/skill-detail';
   static const String onboardingRoute = "/onboarding";
+  static const String authRoute = "/auth";
 }
