@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:skill_forge_app/core/constants/app_constants.dart';
 import 'package:skill_forge_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:skill_forge_app/features/home/domain/entities/skill_entity.dart';
-import 'package:skill_forge_app/features/home/presentation/screens/home_screen.dart';
 import 'package:skill_forge_app/features/home/presentation/screens/skill_detail_screen.dart';
+import 'package:skill_forge_app/features/main/presentation/screens/main_shell_screen.dart';
 import 'package:skill_forge_app/features/onboarding/presentation/screens/onboarding_screen.dart';
 import 'package:skill_forge_app/features/splash/presentation/screens/splash_screen.dart';
 
@@ -27,8 +27,8 @@ class AppRouter {
         builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
-        path: AppConstants.homeRoute,
-        builder: (context, state) => const HomeScreen(),
+        path: AppConstants.mainShellRoute,
+        builder: (context, state) => const MainShellScreen(),
       ),
       GoRoute(
         path: AppConstants.skillDetailRoute,
