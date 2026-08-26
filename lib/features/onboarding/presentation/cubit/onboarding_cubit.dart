@@ -4,15 +4,20 @@ import 'package:skill_forge_app/features/onboarding/presentation/cubit/onboardin
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit() : super(OnboardingState());
 
-  void nextPage() {
-    state.currentPage < 2
-        ? emit(OnboardingState(currentPage: state.currentPage + 1))
-        : emit(OnboardingState(isCompleted: true));
+  /// Called when the user manually swipes or PageController finishes animating.
+  void onPageChanged(int index) {
+    if (index >= 0 && index < state.items.length) {
+      emit(state.copyWith(currentPage: index));
+    }
   }
 
-  void prevPage() {
-    if (state.currentPage > 0) {
-      emit(OnboardingState(currentPage: state.currentPage - 1));
-    }
+  /// Marks onboarding as complete.
+  void skip() {
+    completeOnboarding();
+  }
+
+  /// Marks onboarding as complete.
+  void completeOnboarding() {
+    emit(state.copyWith(isCompleted: true));
   }
 }
