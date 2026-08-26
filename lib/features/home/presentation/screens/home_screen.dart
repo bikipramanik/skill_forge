@@ -11,6 +11,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text(AppConstants.appName),
@@ -54,28 +56,104 @@ class HomeScreen extends StatelessWidget {
               return const Center(child: Text('No skills tracked yet.'));
             }
 
-            // return RefreshIndicator(
-            //   onRefresh: () async {
-            //     context.read<HomeBloc>().add(const RefreshSkillsEvent());
-            //   },
-            //   child: ListView.builder(
-            //     padding: const EdgeInsets.all(16),
-            //     itemCount: state.skills.length,
-            //     itemBuilder: (context, index) {
-            //       final skill = state.skills[index];
-            //       return SkillCard(
-            //         skill: skill,
-            //         onTap: () {
-            //           context.push(
-            //             AppConstants.skillDetailRoute,
-            //             extra: skill,
-            //           );
-            //         },
-            //       );
-            //     },
-            //   ),
-            // );
-            return Center(child: Text("Home Screen"));
+            return SingleChildScrollView(
+              child: Align(
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Container(
+                      // height: height * .5,
+                      width: width * 0.85,
+                      padding: EdgeInsets.all(30),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            const Color.fromARGB(255, 49, 163, 255),
+                            const Color.fromARGB(255, 69, 97, 255),
+                            const Color.fromARGB(255, 2, 81, 118),
+                          ],
+                          stops: [0.0, 0.6, 1.0],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(84, 29, 79, 216),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10),
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        spacing: 20,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 10,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(56, 255, 255, 255),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              "MASTERCLASS",
+                              style: Theme.of(context).textTheme.bodyLarge!
+                                  .copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                          ),
+                          Text(
+                            "Advanced\nData\nVisualitzation",
+                            maxLines: 3,
+                            style: Theme.of(context).textTheme.displayLarge!
+                                .copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 45,
+                                ),
+                          ),
+                          Text(
+                            "Build interactive dashboards using D3.js and React. Portfolio-ready projects included.",
+                            style: Theme.of(context).textTheme.bodyMedium!
+                                .copyWith(color: Colors.white),
+                          ),
+                          Container(
+                            // height: height * .07,
+                            // width: width * .3,
+                            // alignment: Alignment.topLeft,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 15,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color.fromARGB(109, 0, 0, 0),
+                                  offset: Offset(10, 8),
+                                  blurRadius: 10,
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Text(
+                              "Enroll Now",
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
           }
 
           return const SizedBox.shrink();
