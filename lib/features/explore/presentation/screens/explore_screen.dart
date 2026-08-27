@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skill_forge_app/core/widgets/profile_avatar_menu.dart';
 import 'package:skill_forge_app/features/explore/presentation/cubit/category_cubit.dart';
 import 'package:skill_forge_app/features/explore/presentation/widgets/category_filter_chips.dart';
 import 'package:skill_forge_app/features/explore/presentation/widgets/courses_container.dart';
@@ -29,9 +30,9 @@ class ExploreScreen extends StatelessWidget {
           centerTitle: false,
           actions: const [
             Icon(Icons.search),
-            SizedBox(width: 10),
-            CircleAvatar(),
-            SizedBox(width: 10),
+            SizedBox(width: 8),
+            ProfileAvatarMenu(),
+            SizedBox(width: 16),
           ],
         ),
         body: Column(
@@ -79,4 +80,3 @@ class ExploreScreen extends StatelessWidget {
     );
   }
 }
-

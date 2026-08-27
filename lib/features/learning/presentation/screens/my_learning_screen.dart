@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skill_forge_app/app/theme/app_colors.dart';
+import 'package:skill_forge_app/core/widgets/profile_avatar_menu.dart';
 import 'package:skill_forge_app/features/learning/domain/models/learning_course.dart';
 import 'package:skill_forge_app/features/learning/presentation/cubit/learning_cubit.dart';
 import 'package:skill_forge_app/features/learning/presentation/widgets/completed_course_card.dart';
@@ -84,31 +85,13 @@ class MyLearningScreen extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           scrolledUnderElevation: 0,
-          title: Row(
-            children: [
-              Text(
-                'SkillForge',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: AppColors.primary,
-                  letterSpacing: -0.5,
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search, color: Colors.black87),
-            ),
-            const SizedBox(width: 4),
-            const CircleAvatar(
-              radius: 18,
-              backgroundColor: Color(0xFFE2E8F0),
-              child: Icon(Icons.person, color: Colors.black54, size: 20),
-            ),
-            const SizedBox(width: 16),
+          title: Image.asset("assets/Logo.png", height: 150),
+          centerTitle: false,
+          actions: const [
+            Icon(Icons.search),
+            SizedBox(width: 8),
+            ProfileAvatarMenu(),
+            SizedBox(width: 16),
           ],
         ),
         body: SingleChildScrollView(
