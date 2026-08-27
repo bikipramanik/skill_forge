@@ -35,7 +35,9 @@ class LearningCourseCard extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
                 child: Image.asset(
                   course.imagePath,
                   height: 180,
@@ -56,7 +58,10 @@ class LearningCourseCard extends StatelessWidget {
                 top: 12,
                 right: 12,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.92),
                     borderRadius: BorderRadius.circular(20),
@@ -89,7 +94,10 @@ class LearningCourseCard extends StatelessWidget {
               children: [
                 // Category Chip Tag
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFEBE8FF),
                     borderRadius: BorderRadius.circular(8),
