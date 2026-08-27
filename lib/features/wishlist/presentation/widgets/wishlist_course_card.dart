@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:skill_forge_app/app/theme/app_colors.dart';
+import 'package:skill_forge_app/features/checkout/presentation/screens/checkout_screen.dart';
 import 'package:skill_forge_app/features/wishlist/domain/models/wishlist_course.dart';
 
 class WishlistCourseCard extends StatelessWidget {
   final WishlistCourse course;
-  final VoidCallback? onAddToCart;
+  final VoidCallback? onBuyNow;
 
-  const WishlistCourseCard({
-    super.key,
-    required this.course,
-    this.onAddToCart,
-  });
+  const WishlistCourseCard({super.key, required this.course, this.onBuyNow});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +32,9 @@ class WishlistCourseCard extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(16),
+                ),
                 child: Image.asset(
                   course.imagePath,
                   height: 190,
@@ -73,7 +72,10 @@ class WishlistCourseCard extends StatelessWidget {
                 left: 14,
                 bottom: 12,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: const Color(0xFFEBE8FF),
                     borderRadius: BorderRadius.circular(16),
@@ -171,7 +173,22 @@ class WishlistCourseCard extends StatelessWidget {
                   width: double.infinity,
                   height: 46,
                   child: ElevatedButton(
-                    onPressed: onAddToCart ?? () {},
+                    onPressed:
+                        onBuyNow ??
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CheckoutScreen(
+                                courseTitle: course.title,
+                                category: course.category,
+                                imagePath: course.imagePath,
+                                instructor: course.instructor,
+                                price: course.price,
+                              ),
+                            ),
+                          );
+                        },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primary,
                       foregroundColor: Colors.white,
@@ -181,7 +198,7 @@ class WishlistCourseCard extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      'Add to Cart',
+                      'Buy Now',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,

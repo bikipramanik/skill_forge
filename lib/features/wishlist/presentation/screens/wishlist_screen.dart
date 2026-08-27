@@ -87,7 +87,7 @@ class WishlistScreen extends StatelessWidget {
               children: _wishlistedCourses.map((course) {
                 return WishlistCourseCard(
                   course: course,
-                  onAddToCart: () {
+                  onBuyNow: () {
                     // Action when user taps Add to Cart
                   },
                 );

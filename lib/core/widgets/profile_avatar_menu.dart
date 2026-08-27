@@ -107,11 +107,7 @@ class ProfileAvatarMenu extends StatelessWidget {
             value: 'profile',
             child: Row(
               children: const [
-                Icon(
-                  Icons.person_outline,
-                  color: AppColors.primary,
-                  size: 20,
-                ),
+                Icon(Icons.person_outline, color: AppColors.primary, size: 20),
                 SizedBox(width: 12),
                 Text(
                   'Profile',
@@ -124,37 +120,33 @@ class ProfileAvatarMenu extends StatelessWidget {
               ],
             ),
           ),
-          PopupMenuItem<String>(
-            value: 'cart',
-            child: Row(
-              children: const [
-                Icon(
-                  Icons.shopping_bag_outlined,
-                  color: AppColors.primary,
-                  size: 20,
-                ),
-                SizedBox(width: 12),
-                Text(
-                  'My Cart',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const PopupMenuDivider(height: 1),
+          // PopupMenuItem<String>(
+          //   value: 'cart',
+          //   child: Row(
+          //     children: const [
+          //       Icon(
+          //         Icons.shopping_bag_outlined,
+          //         color: AppColors.primary,
+          //         size: 20,
+          //       ),
+          //       SizedBox(width: 12),
+          //       Text(
+          //         'My Cart',
+          //         style: TextStyle(
+          //           fontSize: 14,
+          //           fontWeight: FontWeight.w600,
+          //           color: Colors.black87,
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // const PopupMenuDivider(height: 1),
           PopupMenuItem<String>(
             value: 'logout',
             child: Row(
               children: const [
-                Icon(
-                  Icons.logout,
-                  color: AppColors.error,
-                  size: 20,
-                ),
+                Icon(Icons.logout, color: AppColors.error, size: 20),
                 SizedBox(width: 12),
                 Text(
                   'Log Out',
