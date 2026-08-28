@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Service
+  postgres:
+    image: postgres:16-alpine
+    container_name: skill_forge_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: skill_forge_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Go Backend API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: skill_forge_api
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      ENV: development
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: skill_forge_db
+      DB_SSLMODE: disable
+      JWT_SECRET: skill_forge_super_secret_jwt_key_2026
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

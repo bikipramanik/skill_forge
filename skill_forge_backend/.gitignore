@@ -1,0 +1,22 @@
+# Binaries
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test coverage
+*.out
+
+# Environment & Credentials
+.env
+!.env.example
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+
+# Docker volumes
+postgres_data/
