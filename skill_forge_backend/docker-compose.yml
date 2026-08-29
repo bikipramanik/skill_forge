@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # 1. PostgreSQL Database Service
   postgres:
@@ -11,7 +9,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: skill_forge_db
     ports:
-      - "5432:5432"
+      - "5433:5432" # 5433 is Windows Host port (avoids conflict with erp_backend on 5432). 5432 is internal container port.
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -24,16 +22,10 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     environment:
-      PORT: 8080
-      ENV: development
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: skill_forge_db
-      DB_SSLMODE: disable
-      JWT_SECRET: skill_forge_super_secret_jwt_key_2026
+      DB_HOST: postgres # Internal Docker hostname to connect Go container to PostgreSQL container
     depends_on:
       - postgres
 

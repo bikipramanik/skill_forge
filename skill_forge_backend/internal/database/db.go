@@ -10,7 +10,7 @@ import (
 	"skill_forge_backend/internal/config"
 )
 
-// InitDB opens a PostgreSQL connection pool and tests connectivity
+// InitDB opens a PostgreSQL connection pool and retries ping until DB is ready
 func InitDB(cfg *config.Config) (*sql.DB, error) {
 	dsn := cfg.GetDSN()
 
@@ -24,12 +24,18 @@ func InitDB(cfg *config.Config) (*sql.DB, error) {
 	db.SetMaxIdleConns(10)                 // Maximum idle connections in pool
 	db.SetConnMaxLifetime(5 * time.Minute) // Connection max lifetime
 
-	// Test connection ping
-	if err := db.Ping(); err != nil {
-		db.Close()
-		return nil, fmt.Errorf("failed to ping database: %w", err)
+	// Retry database ping up to 10 times (to handle Docker DB boot time)
+	var pingErr error
+	for attempts := 1; attempts <= 10; attempts++ {
+		pingErr = db.Ping()
+		if pingErr == nil {
+			log.Println("✅ Successfully connected to PostgreSQL database!")
+			return db, nil
+		}
+		log.Printf("⏳ Waiting for PostgreSQL to be ready... (attempt %d/10: %v)", attempts, pingErr)
+		time.Sleep(1 * time.Second)
 	}
 
-	log.Println("✅ Successfully connected to PostgreSQL database!")
-	return db, nil
+	db.Close()
+	return nil, fmt.Errorf("failed to connect to database after 10 attempts: %w", pingErr)
 }
