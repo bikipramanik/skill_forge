@@ -38,6 +38,7 @@ func main() {
 
 	// Register Routes
 	mux.HandleFunc("/api/v1/health", handler.NewHealthCheckHandler(db))
+	mux.HandleFunc("/api/v1/test", handler.TestHandler)
 
 	serverAddr := fmt.Sprintf(":%s", cfg.Port)
 	log.Printf("🚀 Skill Forge Backend starting in %s mode on http://localhost%s", cfg.Env, serverAddr)
