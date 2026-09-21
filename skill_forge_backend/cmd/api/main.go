@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"skill_forge_backend/internal/config"
-	"skill_forge_backend/internal/database"
+	// "skill_forge_backend/internal/database"
 	"skill_forge_backend/internal/handler"
 )
 
@@ -18,8 +18,10 @@ func main() {
 		log.Fatalf("Failed to load configuration: %v", err)
 	}
 
-	// 2. Initialize PostgreSQL Database Connection Pool
-	var db *sql.DB
+	// 2. Database Connection (Disabled for now so you can focus on Go routes without Postgres/Docker)
+	var db *sql.DB // nil - health check will report DB as disconnected
+	/*
+	var err error
 	db, err = database.InitDB(cfg)
 	if err != nil {
 		log.Printf("⚠️ PostgreSQL connection failed: %v", err)
@@ -32,6 +34,7 @@ func main() {
 			log.Printf("⚠️ Database migration error: %v", err)
 		}
 	}
+	*/
 
 	// 4. Set up HTTP Router
 	mux := http.NewServeMux()
